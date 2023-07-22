@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SplashScreenActivity">
+    tools:context=".SplashScreenActivity"
+    android:backgroundTint="@color/putihabu">
 
     <ImageView
         android:id="@+id/img_logo"
-        android:layout_width="273dp"
-        android:layout_height="277dp"
+        android:layout_width="198dp"
+        android:layout_height="223dp"
         android:layout_centerInParent="true"
         app:srcCompat="@drawable/img" />
 

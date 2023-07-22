@@ -5,16 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/putihabu"
     tools:context=".InsertAndViewActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
+        android:background="@color/orange"
         android:theme="@style/Widget.AppCompat.Toolbar" />
-
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -28,7 +27,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginBottom="5dp"
             android:text="Nama File : "
-            android:textColor="#000"
+            android:textColor="@color/orange"
             android:textSize="12sp" />
 
         <EditText
@@ -38,6 +37,7 @@
             android:layout_marginTop="10dp"
             android:padding="5dp"
             android:singleLine="true"
+            android:background="@drawable/et_style"
             android:textSize="14sp" />
 
         <TextView
@@ -46,7 +46,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="5dp"
             android:text="Catatan : "
-            android:textColor="#000"
+            android:textColor="@color/orange"
             android:textSize="12sp" />
 
         <EditText
@@ -73,6 +73,7 @@
             android:textColor="#FFF"
             android:textSize="14sp"
             android:textStyle="bold"
-            app:cornerRadius="8dp" />
+            app:cornerRadius="8dp"
+            android:background="@drawable/btn_style"/>
     </LinearLayout>
 </LinearLayout>

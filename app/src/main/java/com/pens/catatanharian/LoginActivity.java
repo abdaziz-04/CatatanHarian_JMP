@@ -19,7 +19,7 @@ public class LoginActivity extends AppCompatActivity {
 
 //    public static final String FILENAME = "login";
 
-    Button btnLogin;
+    Button btnLogin, btnRegister;
     EditText editUserName, editPassword;
 
     @Override
@@ -27,15 +27,24 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        editUserName = findViewById(R.id.ed_username);
-        editPassword = findViewById(R.id.ed_password);
+        editUserName = findViewById(R.id.editUsername);
+        editPassword = findViewById(R.id.editPassword);
 
-        btnLogin = findViewById(R.id.btn_login1);
+        btnLogin = findViewById(R.id.action_login);
+        btnRegister = findViewById(R.id.action_register);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 login();
+            }
+        });
+
+        btnRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(intent);
             }
         });
     }

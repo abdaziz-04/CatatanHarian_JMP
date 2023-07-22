@@ -13,13 +13,13 @@
         android:theme="@style/Theme.CatatanHarian"
         tools:targetApi="31">
         <activity
+            android:name=".RegisterActivity"
+            android:exported="false" />
+        <activity
             android:name=".InsertAndViewActivity"
             android:exported="false" />
         <activity
             android:name=".InsertAndUpdateActivity"
-            android:exported="false" />
-        <activity
-            android:name=".RegisterActivity"
             android:exported="false" />
         <activity
             android:name=".LoginActivity"

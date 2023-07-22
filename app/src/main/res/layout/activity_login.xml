@@ -1,120 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/putihabu"
+    android:orientation="vertical"
+    android:padding="20dp"
     tools:context=".LoginActivity">
 
     <ImageView
-        android:id="@+id/imageView"
         android:layout_width="150dp"
-        android:layout_height="170dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.167"
-        app:srcCompat="@drawable/img" />
+        android:layout_height="150dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="40dp"
+        android:adjustViewBounds="true"
+        android:fitsSystemWindows="true"
+        android:src="@drawable/img" />
 
     <TextView
-        android:id="@+id/tv_wellcomeback"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif"
-        android:text="SELAMAT DATANG KEMBALI"
-        android:textAlignment="center"
-        android:textColor="#527399"
-        android:textSize="24sp"
+        android:layout_marginTop="20dp"
+        android:text="Username"
+        android:textColor="@color/orange"
+        android:textSize="14sp" />
+
+    <EditText
+        android:id="@+id/editUsername"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="5dp"
+        android:inputType="text"
+        android:textColor="#000"
+        android:textSize="14sp"
+        android:background="@drawable/et_style"
+        android:hint="Masukkan Username"
+        android:textColorHint="#E4E4E4"
+        android:paddingStart="7dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Password"
+        android:textColor="@color/orange"
+        android:textSize="14sp" />
+
+    <EditText
+        android:id="@+id/editPassword"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="5dp"
+        android:inputType="textPassword"
+        android:textColor="#000"
+        android:textSize="14sp"
+        android:hint="Masukkan Password"
+        android:textColorHint="#E4E4E4"
+        android:paddingStart="7dp"
+        android:background="@drawable/et_style"/>
+
+    <Button
+        android:id="@+id/action_login"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/btn_style"
+        android:text="Login"
+        android:textColor="#FFF"
+        android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.138" />
+        app:cornerRadius="8dp" />
 
-    <androidx.cardview.widget.CardView
+    <Button
+        android:id="@+id/action_register"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:backgroundTint="@color/putihabu"
-        android:padding="40dp"
-        app:cardElevation="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.355">
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/btn_style"
+        android:text="Register"
+        android:textColor="#FFF"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:cornerRadius="8dp" />
+</LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="9dp"
-            android:orientation="vertical"
-            android:padding="30dp">
 
-            <TextView
-                android:id="@+id/tv_username"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Username" />
-
-            <EditText
-                android:id="@+id/ed_username"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="text"
-                android:hint="Masukkan Username"
-                android:textColor="@color/abu" />
-
-            <TextView
-                android:id="@+id/tv_password"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Password" />
-
-            <EditText
-                android:id="@+id/ed_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Masukkan Password"
-                android:inputType="textPassword"
-                android:textColor="@color/abu"
-                android:textColorHint="@color/abu" />
-
-            <TextView
-                android:id="@+id/tv_forgotpw"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="8dp"
-                android:text="Lupa Password?"
-                android:textAlignment="viewEnd"
-                android:textColor="@color/abu" />
-
-            <Button
-                android:id="@+id/btn_login1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="9dp"
-                android:backgroundTint="@color/orange"
-                android:onClick="postLogin"
-                android:text="Login"
-                app:cornerRadius="8dp" />
-
-            <TextView
-                android:id="@+id/id_nanyaakun"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="6dp"
-                android:text="Belum Punya Akun?"
-                android:textColor="@color/abu" />
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
-
-</androidx.constraintlayout.widget.ConstraintLayout>

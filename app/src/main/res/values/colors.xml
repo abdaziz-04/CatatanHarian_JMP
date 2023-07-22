@@ -5,5 +5,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="orange">#EF4505</color>>
     <color name="abu">#527399</color>>
+    <color name="abutrans">#337ABE</color>
     <color name="putihabu">#EBF1F9</color>>
+    <color name="putihku">#F5F5F5</color>
 </resources>

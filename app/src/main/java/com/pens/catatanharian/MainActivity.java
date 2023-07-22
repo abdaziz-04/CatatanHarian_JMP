@@ -7,21 +7,20 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
-
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
@@ -29,11 +28,11 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
-//    public static final String FILENAME = "login";
-
 
     public static final int REQUEST_CODE_STORAGE = 100;
     ListView listView;
@@ -44,8 +43,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Aplikasi Catatan Proyek");
-
+        getSupportActionBar().setTitle("Catatan Harian");
 
         listView = findViewById(R.id.listView);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -66,25 +64,19 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+        periksaIzinPenyimpanan();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         mengambilListFilePadaFolder();
-
-//        if (Build.VERSION.SDK_INT >= 23) {
-//            if (periksaIzinPenyimpanan()) {
-//                mengambilListFilePadaFolder();
-//            }
-//        } else {
-//            mengambilListFilePadaFolder();
-//        }
     }
 
     public boolean periksaIzinPenyimpanan() {
         if (Build.VERSION.SDK_INT >= 23) {
-            if (checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+            if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
                 return true;
             } else {
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_CODE_STORAGE);
@@ -108,29 +100,40 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void mengambilListFilePadaFolder() {
-        Log.d("MainActivity","mengambilListFilePadaFolder");
-
         String path = getFilesDir().toString() + Constants.direktoriFile;
         File directory = new File(path);
         if (directory.exists()) {
             File[] files = directory.listFiles();
-            String[] filenames = new String[files.length];
-            String[] dateCreated = new String[files.length];
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd MM YYYY HH:mm:ss");
-            ArrayList<Map<String, Object>> itemDataList = new ArrayList<Map<String, Object>>();
+            List<Map<String, Object>> itemDataList = new ArrayList<>();
 
-            for (int i = 0; i < files.length; i++) {
-                filenames[i] = files[i].getName();
-                Date lastModDate = new Date(files[i].lastModified());
-                dateCreated[i] = simpleDateFormat.format(lastModDate);
+            for (File file : files) {
+                String filename = file.getName();
+                long lastModified = file.lastModified();
+                String dateModified = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.getDefault()).format(new Date(lastModified));
+
                 Map<String, Object> listItemMap = new HashMap<>();
-                listItemMap.put("name", filenames[i]);
-                listItemMap.put("date", dateCreated[i]);
+                listItemMap.put("name", filename);
+                listItemMap.put("date", dateModified);
                 itemDataList.add(listItemMap);
             }
+
             SimpleAdapter simpleAdapter = new SimpleAdapter(this,
                     itemDataList, android.R.layout.simple_list_item_2,
-                    new String[]{"name", "date"}, new int[]{android.R.id.text1, android.R.id.text2});
+                    new String[]{"name", "date"}, new int[]{android.R.id.text1, android.R.id.text2}) {
+                @Override
+                public View getView(int position, View convertView, ViewGroup parent) {
+                    View view = super.getView(position, convertView, parent);
+                    TextView textView1 = view.findViewById(android.R.id.text1);
+                    TextView textView2 = view.findViewById(android.R.id.text2);
+
+                    // Atur warna teks untuk setiap elemen pada ListView
+                    textView1.setTextColor(getResources().getColor(android.R.color.black)); // Ubah warna teks menjadi hitam
+                    textView2.setTextColor(getResources().getColor(android.R.color.darker_gray)); // Ubah warna teks menjadi abu-abu
+
+                    return view;
+                }
+            };
+
             listView.setAdapter(simpleAdapter);
             simpleAdapter.notifyDataSetChanged();
         }
@@ -157,7 +160,6 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
     void tampilkanDialogKonfirmasiHapusCatatan(final String filename) {
         new AlertDialog.Builder(this).setTitle("Hapus Catatan ini?")
                 .setMessage("Apakah Anda yakin ingin menghapus Catatan " + filename + "?")
@@ -170,7 +172,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void hapusFile(String filename) {
-        String path = Environment.getExternalStorageDirectory().toString() + Constants.direktoriFile;
+        String path = getFilesDir().toString() + Constants.direktoriFile;
         File file = new File(path, filename);
         if (file.exists()) {
             file.delete();

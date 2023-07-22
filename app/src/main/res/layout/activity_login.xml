@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_centerHorizontal="false"
     android:background="@color/putihabu"
     android:orientation="vertical"
     android:padding="20dp"
@@ -31,14 +32,13 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginTop="5dp"
-        android:inputType="text"
-        android:textColor="#000"
-        android:textSize="14sp"
         android:background="@drawable/et_style"
         android:hint="Masukkan Username"
-        android:textColorHint="#E4E4E4"
+        android:inputType="text"
         android:paddingStart="7dp"
-        />
+        android:textColor="#000"
+        android:textColorHint="#E4E4E4"
+        android:textSize="14sp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -53,13 +53,13 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginTop="5dp"
-        android:inputType="textPassword"
-        android:textColor="#000"
-        android:textSize="14sp"
+        android:background="@drawable/et_style"
         android:hint="Masukkan Password"
-        android:textColorHint="#E4E4E4"
+        android:inputType="textPassword"
         android:paddingStart="7dp"
-        android:background="@drawable/et_style"/>
+        android:textColor="#000"
+        android:textColorHint="#E4E4E4"
+        android:textSize="14sp" />
 
     <Button
         android:id="@+id/action_login"

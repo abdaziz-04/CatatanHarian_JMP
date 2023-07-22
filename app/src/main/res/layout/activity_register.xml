@@ -13,9 +13,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
-        android:theme="@style/Widget.AppCompat.Toolbar"
+        android:theme="@style/Widget.Material3.CollapsingToolbar"
         android:title="Catatan Harian"
-        app:titleTextColor="@color/putihabu"/>
+        app:titleTextColor="@color/putihabu"
+        />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -116,7 +117,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="Alamat Tinggal"
-                android:textColor="#000"
+                android:textColor="@color/orange"
                 android:textSize="14sp" />
 
             <EditText
@@ -137,7 +138,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="40dp"
-                android:background="@color/colorPrimary"
+                android:background="@drawable/btn_style"
                 android:text="Simpan"
                 android:textColor="#FFF"
                 android:textSize="14sp" />

@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
-        android:theme="@style/Widget.AppCompat.Toolbar" />
+        android:theme="@style/Widget.Material3.CollapsingToolbar" />
 
     <ListView
         android:id="@+id/listView"
